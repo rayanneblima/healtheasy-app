@@ -1,19 +1,15 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
+<!--         :disable="!isUserActive"
+ -->
       <AppToolbar
         :menu="menu"
-        :disable="!isUserActive"
         @toggleLeftDrawer="handleToggleLeftDrawer"
       />
     </q-header>
 
-    <DrawerMenu
-      ref="drawerMenuRef"
-      v-if="menu"
-      :menu="menu"
-      :disable="!isUserActive"
-    />
+    <DrawerMenu ref="drawerMenuRef" v-if="menu" :menu="menu" :disable="!isUserActive" />
 
     <q-page-container>
       <router-view v-slot="{ Component }" class="app-layout" v-if="isUserActive">
@@ -83,16 +79,17 @@ export default defineComponent({
     const menu = ref({});
     const drawerMenuRef = ref(null);
 
-    const isUserActive = computed(() => store.getUserStatus === 'active');
+    // const isUserActive = computed(() => store.getUserStatus === 'active');
+    const isUserActive = computed(() => true);
 
     const handleToggleLeftDrawer = () => {
       drawerMenuRef.value.leftDrawerOpen = !drawerMenuRef.value.leftDrawerOpen;
     };
 
     const getMenuItems = () => {
-      if (userAuthRole) {
-        menu.value = mainMenu[userAuthRole] || [];
-      }
+      // if (userAuthRole) {
+      menu.value = mainMenu[userAuthRole || 'doctor'] || [];
+      // }
     };
 
     onMounted(async () => {
@@ -111,7 +108,7 @@ export default defineComponent({
 </script>
 
 <style>
-.app-layout > .q-form {
+.app-layout>.q-form {
   background: #FFF;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;

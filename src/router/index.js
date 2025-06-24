@@ -6,7 +6,7 @@ import {
   createWebHashHistory,
 } from 'vue-router';
 import routes from './routes';
-import useAuthUser from '@/composables/useAuthUser';
+// import useAuthUser from '@/composables/useAuthUser';
 
 /*
  * If not building with SSR mode, you can
@@ -35,36 +35,34 @@ export default route((/* { store, ssrContext } */) => {
     routes,
   });
 
-  Router.beforeEach((to) => {
-    const { isLoggedIn } = useAuthUser();
+  // Router.beforeEach((to) => {
+  // const { isLoggedIn } = useAuthUser();
 
-    console.log(isLoggedIn(), to);
+  // if (to.hash.includes('#error=unauthorized_client')) {
+  //   return { name: 'login' };
+  // }
 
-    if (to.hash.includes('#error=unauthorized_client')) {
-      return { name: 'login' };
-    }
+  // if (to.hash.includes('#error')) {
+  //   return { name: 'not-found' };
+  // }
 
-    if (to.hash.includes('#error')) {
-      return { name: 'not-found' };
-    }
+  // if (to.hash.includes('type=recovery') && to.name !== 'reset-password') {
+  //   const accessTokenQuery = to.hash.split('&')[0];
+  //   const token = accessTokenQuery.replace('#access_token=', '');
 
-    if (to.hash.includes('type=recovery') && to.name !== 'reset-password') {
-      const accessTokenQuery = to.hash.split('&')[0];
-      const token = accessTokenQuery.replace('#access_token=', '');
+  //   return { name: 'reset-password', query: { token } };
+  // }
 
-      return { name: 'reset-password', query: { token } };
-    }
+  // if (Object.keys(to.query).includes('fromEmail')) {
+  //   return { name: 'login' };
+  // }
 
-    if (Object.keys(to.query).includes('fromEmail')) {
-      return { name: 'login' };
-    }
+  // if (!isLoggedIn() && to.meta.requiresAuth && !Object.keys(to.query).includes('fromEmail')) {
+  //   return { name: 'login' };
+  // }
 
-    if (!isLoggedIn() && to.meta.requiresAuth && !Object.keys(to.query).includes('fromEmail')) {
-      return { name: 'login' };
-    }
-
-    return true;
-  });
+  //   return true;
+  // });
 
   return Router;
 });

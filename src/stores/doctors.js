@@ -1,9 +1,10 @@
 import { defineStore } from 'pinia';
 import useSupabaseApi from '@/composables/useSupabaseApi';
+import { doctorsMock } from '@/mocks/doctors';
 
 const {
-  listByIdForArray,
-  getById,
+  // listByIdForArray,
+  // getById,
   getUser,
   update,
 } = useSupabaseApi();
@@ -23,37 +24,38 @@ export const useDoctorsStore = defineStore({
     async fetchDoctors() {
       try {
         this.quasar.loading.show();
-        const { id: clinicId } = await getUser();
+        // const { id: clinicId } = await getUser();
 
-        const doctors = await listByIdForArray(
-          'doctors',
-          {
-            column: 'clinic_id',
-            value: clinicId,
-          },
-          `
-            id,
-            profile_id,
-            clinic_id,
-            plans
-          `,
-        );
+        // const doctors = await listByIdForArray(
+        //   'doctors',
+        //   {
+        //     column: 'clinic_id',
+        //     value: clinicId,
+        //   },
+        //   `
+        //     id,
+        //     profile_id,
+        //     clinic_id,
+        //     plans
+        //   `,
+        // );
 
-        this.doctors = await Promise.all(doctors.map(async (doctor) => {
-          const {
-            id,
-            ...doctorData
-          } = doctor;
-          doctorData.doctor_id = id;
+        // this.doctors = await Promise.all(doctors.map(async (doctor) => {
+        //   const {
+        //     id,
+        //     ...doctorData
+        //   } = doctor;
+        //   doctorData.doctor_id = id;
 
-          let profile = {};
+        //   let profile = {};
 
-          if (doctorData.profile_id) {
-            profile = await getById('profiles', doctorData.profile_id);
-          }
+        //   if (doctorData.profile_id) {
+        //     profile = await getById('profiles', doctorData.profile_id);
+        //   }
 
-          return Object.assign(profile, doctorData);
-        }));
+        //   return Object.assign(profile, doctorData);
+        // }));
+        this.doctors = doctorsMock;
       } catch (error) {
         this.notifyError(error.message);
       }

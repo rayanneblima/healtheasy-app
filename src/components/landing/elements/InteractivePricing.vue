@@ -3,27 +3,27 @@
     <span class="flag-discount" v-show="discount > 0">{{ discount * 100 }}% OFF</span>
 
     <header class="section-top">
-    <h5>
-    <template v-if="accessQty === 1">
-      1 acesso
-    </template>
-    <template v-if="accessQty === 2">
-      2 a 5 acessos
-    </template>
-    <template v-if="accessQty === 3">
-      6 a 10 acessos
-    </template>
-  </h5>
+      <h5>
+        <template v-if="accessQty === 1">
+          1 acesso
+        </template>
+        <template v-if="accessQty === 2">
+          2 a 5 acessos
+        </template>
+        <template v-if="accessQty === 3">
+          6 a 10 acessos
+        </template>
+      </h5>
 
       <div class="custom-select">
-  <select v-model="accessQty" style="border-radius: 49px;">
-    <option value="1">1 acesso</option>
-    <option value="4.00375469">2 a 5 acessos</option>
-    <option value="7.00750939">6 a 10 acessos</option>
-  </select>
-</div>
-    
-        <div class="plan-value">
+        <select v-model="accessQty" style="border-radius: 49px;">
+          <option value="1">1 acesso</option>
+          <option value="4.00375469">2 a 5 acessos</option>
+          <option value="7.00750939">6 a 10 acessos</option>
+        </select>
+      </div>
+
+      <div class="plan-value">
         <p> Preço:{{ finalPrice }} </p>
         <span>/ mês </span>
       </div>
@@ -125,8 +125,8 @@ export default defineComponent({
 
     const finalPrice = computed(() => {
       if (accessQty.value === null || accessQty.value === undefined) {
-      return ''; // ou qualquer valor padrão desejado
-  }
+        return ''; // ou qualquer valor padrão desejado
+      }
 
       const totalPrice = accessQty.value > 10
         ? selectedPlan.value.price * accessQty.value
@@ -292,11 +292,9 @@ input[type="range"]:active::-moz-range-thumb {
 
 input[type="range"]::-webkit-slider-runnable-track {
   background: var(--light-gray);
-  background-image: linear-gradient(
-    to right,
-    rgb(165, 243, 235) calc(var(--slider-left) * 1%),
-    transparent 0%
-  );
+  background-image: linear-gradient(to right,
+      rgb(165, 243, 235) calc(var(--slider-left) * 1%),
+      transparent 0%);
   border-radius: 10px;
   cursor: ew-resize;
 
@@ -306,11 +304,9 @@ input[type="range"]::-webkit-slider-runnable-track {
 
 input[type="range"]::-moz-range-track {
   background: var(--light-gray);
-  background-image: linear-gradient(
-    to right,
-    rgb(165, 243, 235) calc(var(--slider-left) * 1%),
-    transparent 0%
-  );
+  background-image: linear-gradient(to right,
+      rgb(165, 243, 235) calc(var(--slider-left) * 1%),
+      transparent 0%);
   border-radius: 10px;
   cursor: pointer;
 

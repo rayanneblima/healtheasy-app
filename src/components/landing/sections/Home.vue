@@ -4,7 +4,7 @@
 
     <div class="content grid">
       <div class="section-left">
-      <h1>Sistema para clínicas e consultórios</h1>
+        <h1>Sistema para clínicas e consultórios</h1>
 
         <p>
           A Health Easy fornece software de gestão para clínicas e
@@ -13,18 +13,14 @@
           a eficiência e a qualidade do atendimento ao paciente.
         </p>
 
-        <CustomButton
-          text="Entrar em contato"
-          :height="50"
-          :width="200"
-          :link="{ name: 'landing', hash: '#contato' }"
-        />
+        <CustomButton text="Entrar em contato" :height="50" :width="200"
+          :link="{ name: 'landing', hash: '#contato' }" />
       </div>
     </div>
 
-      <div class="section-right">
-        <img src="@/assets/mockup-1.png" alt="" />
-      </div>
+    <div class="section-right">
+      <img src="@/assets/mockup-1.png" alt="" />
+    </div>
   </section>
 </template>
 
@@ -43,10 +39,14 @@ export default defineComponent({
 
 <style scoped>
 .container {
-  background-color: var(--light-blue); /* Cor do azul claro */
-  padding: 20px; /* Espaçamento interno */
-  border-radius: 10px; /* Borda arredondada */
-  margin: 20px; /* Espaçamento externo */
+  background-color: var(--light-blue);
+  /* Cor do azul claro */
+  padding: 20px;
+  /* Espaçamento interno */
+  border-radius: 10px;
+  /* Borda arredondada */
+  margin: 20px;
+  /* Espaçamento externo */
 }
 
 .content {
@@ -54,7 +54,7 @@ export default defineComponent({
   grid-template-columns: repeat(2, 1fr);
   min-height: 75vh;
 }
- 
+
 .section-left {
   justify-content: center;
 }

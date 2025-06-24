@@ -41,7 +41,7 @@
         </p>
         <p class="text-left">
           <q-icon name="mdi-map-marker" size="16px" class="q-mr-sm" />
-           Avenida Dom Luís, 176 - Mezanino - Fortaleza - Ceará
+          Avenida Dom Luís, 176 - Mezanino - Fortaleza - Ceará
         </p>
       </div>
     </div>

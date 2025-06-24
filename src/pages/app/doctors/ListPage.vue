@@ -1,5 +1,6 @@
 <template>
   <q-page padding>
+    {{ doctors }}
     <DynamicTable
       labelTitle="Médicos"
       routeName="form-doctor"

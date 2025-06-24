@@ -39,6 +39,8 @@ import {
   formatDateTimeToLocaleString,
 } from '@/utils/dateUtils';
 
+import { appointmentsMock } from '@/mocks/appointments';
+
 export default defineComponent({
   name: 'AppointmentsPage',
 
@@ -51,7 +53,11 @@ export default defineComponent({
     const router = useRouter();
     const store = useAppointmentsStore();
     const { selectedViewMode } = storeToRefs(store);
-    const { listByUserId, remove, update } = useSupabaseApi();
+    const {
+      // listByUserId,
+      remove,
+      update,
+    } = useSupabaseApi();
     const { notifyError, notifySuccess } = useNotify();
     const { dialogConfirm } = useDialog();
 
@@ -210,7 +216,8 @@ export default defineComponent({
     const fetchAppointments = async () => {
       try {
         $q.loading.show();
-        appointments.value = await listByUserId('appointments');
+        // appointments.value = await listByUserId('appointments');
+        appointments.value = appointmentsMock;
 
         if (appointments.value) {
           parseAppointments();
